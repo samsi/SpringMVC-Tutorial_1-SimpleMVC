@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="data-mapper">
+    <select id="selectAllPeople" resultType="me.samuelsimon.springmvc_tutorial.simplemvc.MyData">
+        select * from person order by id asc
+    </select>
+
+    <select id="selectOnePerson" resultType="me.samuelsimon.springmvc_tutorial.simplemvc.MyData">
+        select * from person where id=#{id}
+    </select>
+
+    <insert id="insertPerson" parameterType="me.samuelsimon.springmvc_tutorial.simplemvc.MyData">
+        insert into person (name, age) values (#{name}, #{age})
+    </insert>
+
+    <update id="updatePerson" parameterType="me.samuelsimon.springmvc_tutorial.simplemvc.MyData">
+        update person set name=#{name}, age=#{age} where id=#{id}
+    </update>
+
+    <delete id="deletePerson" parameterType="int">
+        delete from person where id = #{id}
+    </delete>
+</mapper>
